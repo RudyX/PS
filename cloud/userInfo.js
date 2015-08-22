@@ -5,6 +5,8 @@
  * Back : {status:string}
  *
  */
+var AV = require('leanengine');
+var url = require("url");
 AV.Cloud.define("cmSignUp",function(request,response){
     var params = request.params;
     var username = params.phoneNumber;
@@ -43,9 +45,3 @@ AV.Cloud.define("cmSignIn",function(request,response){
 
 });
 
-
-AV.Cloud.define("test02",function(request,response){
-
-    amaptest();
-
-});
