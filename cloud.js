@@ -7,6 +7,10 @@ var AV = require('leanengine');
 
 require("./cloud/userInfo.js");
 require("./cloud/storeInfo.js");
+require("./cloud/merchantApi.js");
+
+
+
 
 AV.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");

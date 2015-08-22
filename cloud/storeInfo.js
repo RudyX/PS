@@ -1,5 +1,5 @@
 var http = require("http");
-var url = require("url");
+var fs = require('fs');
 var AV = require('leanengine');
 var querystring = require('querystring');
 
@@ -36,7 +36,30 @@ AV.Cloud.define('cmGetStoreMain',function(request,response){
 
 });
 
+
 AV.Cloud.define('testfun2',function(request,response){
-    response.success("retuen success!");
-})
+
+
+    fs.readFile(__dirname+'/../client/img/1.png',function(err,data){
+        if(err)
+        {
+            console.log("error");
+            console.log(err);
+            //response.error(err);
+        }
+        // console.log(data);
+
+        var picFile = new AV.File('test0821.png',data);
+
+        picFile.save().then(function(){
+            console.log('save success');
+            response.success(data);
+        },function(err){
+            console.log('error');
+            console.log(err);
+            response.error(err);
+        });
+    });
+});
+
 
