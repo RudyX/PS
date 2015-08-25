@@ -23,10 +23,10 @@ AV.Cloud.define('mcAddCmdy',function(request,response){
     var repertory = request.params.repertory;
 
     var cmdycode = request.params.cmdycode;
-    var cmdycode = '1234567890';
+    //var cmdycode = '1234567890';
 
     var mcId = request.params.mcId;
-    var mcId = 'SH00001';
+    //var mcId = 'SH00001';
 
     var query = new AV.Query('tCommodity');
 
@@ -49,10 +49,11 @@ AV.Cloud.define('mcAddCmdy',function(request,response){
             mcCmdy.set('manufname',data.get('manfname'));
             mcCmdy.set('barcode',data.get('barcode'));
             mcCmdy.set('pictures',data.get('pictures'));
-            mcCmdy.set('class',data.get('class'));
+            mcCmdy.set('classId',data.get('classId'));
             mcCmdy.set('cmdyname',data.get('cmdyname'));
             mcCmdy.set('trademark',data.get('trademark'));
             mcCmdy.set('specification',data.get('specification'));
+            mcCmdy.set('thumbnailUrl',data.get('thumbnailUrl'));
 
 
             mcCmdy.save(null,{
