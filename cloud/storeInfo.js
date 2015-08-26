@@ -5,8 +5,10 @@ var querystring = require('querystring');
 
 
 AV.Cloud.define("cmGetAroundStoreList",function(request,response){
-    var center = request.center;
+    //center = "xxx.xxxxxx,xxx.xxxxxx";
+    var center = request.params.center;
     if(center == null){
+        console.log("center is null");
         center =  "121.527184,31.228728";
     }
     var queryParams = {
@@ -97,76 +99,24 @@ AV.Cloud.define('cmGetCmdyList',function(request,response){
             response.error(error);
         }
     });
-
-
-
-
 });
 
 
-AV.Cloud.define('testfun2',function(request,response){
-
-
-    fs.readFile(__dirname+'/../client/img/1.png',function(err,data){
-        if(err)
-        {
-            console.log("error");
-            console.log(err);
-
+AV.Cloud.define('cmGetCmdyIndo',function(request,response){
+    var cmdyEncode = request.params.cmdyEncode;
+    var mcEncode = request.params.mcEncode;
+    var mcCmdyTable = 'Mc'+mcEncode+'Cmdy';
+    var query = new AV.Query('mcCmdyTable');
+    query.equalTo('cmdyEncode',cmdyEncode);
+    query.first({
+        success:function(data){
+            response.success(data);
+        },
+        error:function(data,error){
+            response.error(error);
         }
-
-        //var picFile = new AV.File('test0821.png',data);
-        //
-        //picFile.save().then(function(){
-        //    console.log('save success');
-        //    response.success(data);
-        //},function(err){
-        //    console.log('error');
-        //    console.log(err);
-        //    response.error(err);
-        //});
-
-
-        //save pic in CmdyPicture
-        //var CmdyPicture = AV.Object.extend('CmdyPicture');
-        //var cmdyPic = new CmdyPicture();
-        //cmdyPic.set('dataBase64',data.toString("base64"));
-        //console.log('prepare to save...');
-        ////console.log(data.toString("base64"));
-        //cmdyPic.save(null,{
-        //    success:function(data){
-        //        console.log('success');
-        //        response.success(data);
-        //
-        //    },
-        //    error:function(object,error){
-        //        console.log('error');
-        //        response.error(error);
-        //    }
-        //});
-
-
-
-        var query = new AV.Query('_File');
-        //var file = profile.get('test0821.png');
-       // var file
-
-        query.equalTo('name','test0821.png');
-        query.find({
-            success:function(datas){
-
-
-                var data = datas[0];
-
-                console.log(data.url());
-                response.success(data);
-            },
-            error:function(error){
-                console.loge(error);
-            }
-        });
-
     });
+
 });
 
 
