@@ -1,0 +1,14 @@
+.self-body{
+    width:900px;
+
+    min-height: 900px;
+    position:relative;
+    left:10%;
+}
+.self-border{
+    border:1px solid black;
+}
+
+.self-inline-center{
+    text-align:center;
+}

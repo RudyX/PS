@@ -1,0 +1,35 @@
+doctype html
+html
+   head
+      link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css")
+      link(rel="stylesheet" href="/css/style.css" type="text/css")
+      title #{title}
+   body
+      div.container
+         div.row
+            div.self-body.self-border
+               h2.self-inline-center(style='margin:100px auto') 私家超市后台系统
+
+               form.self-block-center(style='width=50%;')
+                  div(style='width:400px;margin:100px auto')
+                     div.form-group
+                        label(for="username") 用户名:
+                        input.form-control#username(type='text' placeholder='手机号码/邮箱')
+                     div.form-group
+                        label(for="password") 密码:
+                        input.form-control#password(type='password' placeholder='请输入密码')
+                     div.form-group
+                        label(for="verification") 验证码:
+                        span(style='width:40px;display:inline-block')
+                        button.btn.btn-danger() 获取验证码
+                        input.form-control#verification(type='text' placeholder='请输入验证码')
+
+
+
+
+
+
+
+
+      script(src='/bower_components/jquery/dist/jquery.min.js')
+      script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')

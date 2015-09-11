@@ -2,6 +2,7 @@ var http = require("http");
 var fs = require('fs');
 var AV = require('leanengine');
 var querystring = require('querystring');
+var self = require('./toolsModule');
 
 
 AV.Cloud.define("cmGetAroundStoreList",function(request,response){
@@ -9,7 +10,7 @@ AV.Cloud.define("cmGetAroundStoreList",function(request,response){
     var center = request.params.center;
     if(center == null){
         console.log("center is null");
-        center =  "121.527184,31.228728";
+        center =  "121.597575,31.265437";
     }
     var queryParams = {
         key:'9f85b87a014354cb5e0fe5bfe9af076c',
@@ -24,8 +25,16 @@ AV.Cloud.define("cmGetAroundStoreList",function(request,response){
     };
     var req = http.request(option,function(res){
         res.on('data',function(chunk){
-            console.log(""+chunk);
-            response.success(""+chunk);
+
+            var dataObj = JSON.parse(chunk.toString());
+
+
+
+
+            //地址名让王直接用高德地图的api，高德地图只支持客户端获取逆地理编码
+
+            response.success(dataObj.datas);
+
         });
     });
     req.on('error',function(e){
@@ -35,6 +44,34 @@ AV.Cloud.define("cmGetAroundStoreList",function(request,response){
 });
 
 AV.Cloud.define('cmGetStoreMain',function(request,response){
+    var mcEncode = request.params.mcEncode;
+
+    var cmdysArr = [];
+    var imgsArr = [];
+
+    var mcCmdyTable = self.tool.getMcCmdyTable(mcEncode);
+    var query = new AV.Query(mcCmdyTable);
+    query.equalTo('isDiscount',true);
+    query.find({
+        success:function(result){
+            
+           // response.success(result);
+        },
+        error:function(error){
+            response.error(error);
+        }
+    });
+
+
+    response.success(mcCmdyTable);
+
+
+
+
+
+
+
+
 
 });
 

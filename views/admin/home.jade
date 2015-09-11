@@ -1,0 +1,32 @@
+//
+   Created by TimLi on 15/9/7.
+
+doctype html
+html
+   head
+      link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css")
+      link(rel="stylesheet" href="/css/style.css" type="text/css")
+      title #{title}
+   body
+      div.container
+         div.row
+            div.self-body.self-border
+
+            div
+               ul.nav.nav-tabs
+                  li.active
+                     a(a href="#home" aria-controls="home" role="tab" data-toggle="tab") 首页
+                  li
+                     a(a href="#mcManage" aria-controls="mcManage" role="tab" data-toggle="tab") 首页
+
+
+
+               div.tab-content
+                  div.tab-pane.active#home ...
+                  div.tab-pane#mcManage ...
+
+
+
+
+      script(src='/bower_components/jquery/dist/jquery.min.js')
+      script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')

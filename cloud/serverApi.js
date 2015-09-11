@@ -5,6 +5,8 @@ var http = require("http");
 var fs = require('fs');
 var AV = require('leanengine');
 var querystring = require('querystring');
+var url = require('url')
+var self = require('./toolsModule');
 
 
 AV.Cloud.define('addCenterCmdy',function(request,response){
@@ -21,7 +23,7 @@ AV.Cloud.define('addCenterCmdy',function(request,response){
 AV.Cloud.define('addMerchant',function(request,response){
     var mcName = request.params.mcName;
     var mcAddress = request.params.mcAddress;
-    var mcGeo = request.params.mcGeo;
+    var mcLocation = request.params.mcLocation;
     var saleScope = request.params.saleScope;
     var businessHours = request.params.businessHours;
     var orderQuantity = request.params.orderQuantity;
@@ -38,6 +40,8 @@ AV.Cloud.define('addMerchant',function(request,response){
     var mcGrade = request.params.mcGrade;
 
 
+
+
     //get a merchant
     var mc = new AV.User();
     mc.set('mcName',mcName);
@@ -45,7 +49,7 @@ AV.Cloud.define('addMerchant',function(request,response){
     mc.set('password',mcPassword);
     mc.set('mobilePhoneNumber',ownerPhone);
     mc.set('mcAddress',mcAddress);
-    mc.set('mcGeo',mcGeo);
+    mc.set('mcLocation',mcLocation);
     mc.set('saleScope',saleScope);
     mc.set('businessHours',businessHours);
     mc.set('orderQuantity',orderQuantity);
@@ -56,15 +60,62 @@ AV.Cloud.define('addMerchant',function(request,response){
     mc.set('cmdyCount',cmdyCount);
     mc.set('selfCmdyCount',selfCmdyCount);
     mc.set('minCost',minCost);
-    mc.set('mcGrade',mcGeo);
+    mc.set('mcGrade',mcGrade);
 
-    mc.signUp(null,{
-        success:function(merchant){
-            response.success(merchant);
-        },
-        error:function(object,error){
-            response.error('error');
-        }
+
+
+
+
+    var amapData = new self.val.aMap.data(mcName,mcLocation,saleScope,minCost,mcAddress,mcEncode);
+
+
+
+    var reqData = querystring.stringify({
+        key:self.val.aMap.key,
+        tableid:self.val.aMap.tableId,
+        data:JSON.stringify(amapData)
     });
+
+
+
+
+
+    var amapUrl = url.parse(self.val.aMap.createDataUrl);
+
+    var options = {
+        hostname:amapUrl.hostname,
+        path:amapUrl.path,
+        method:'post',
+        headers:{
+            'Content-Type':self.val.aMap.httpHeadContentType
+        }
+    };
+
+
+
+    var req = http.request(options,function(res){
+        console.log('STATUS: ' + res.statusCode);
+        res.on('data',function(chunk){
+            console.log(''+chunk);
+
+            mc.signUp(null,{
+                success:function(merchant){
+                    response.success(merchant);
+                },
+                error:function(object,error){
+                    response.error(error);
+                }
+            });
+           // response.success(''+chunk);
+
+        });
+    });
+
+    req.on('error', function(e) {
+        console.log('---problem with request: ' + e.message);
+    });
+    req.write(reqData);
+    req.end();
+
 
 });

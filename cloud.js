@@ -11,9 +11,7 @@ var AV = require('leanengine');
  *
  *
  */
-var CenterCmdy = AV.Object.extend('CenterCmdy');
-
-
+//var CenterCmdy = AV.Object.extend('CenterCmdy');
 
 
 
