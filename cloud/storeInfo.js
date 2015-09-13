@@ -49,21 +49,62 @@ AV.Cloud.define('cmGetStoreMain',function(request,response){
     var cmdysArr = [];
     var imgsArr = [];
 
-    var mcCmdyTable = self.tool.getMcCmdyTable(mcEncode);
-    var query = new AV.Query(mcCmdyTable);
-    query.equalTo('isDiscount',true);
-    query.find({
+    var change = false;
+
+
+    var mcCmdyTable = self.tools.getMcCmdyTable(mcEncode);
+    var mcADName = self.tools.getMCAD(mcEncode);
+    var imgQuery = new AV.Query('_File');
+    var cmdyQuery = new AV.Query(mcCmdyTable);
+
+
+    imgQuery.startsWith('name',mcADName);
+    imgQuery.find({
         success:function(result){
-            
-           // response.success(result);
+            imgOnFinish(result);
+           // response.success(change);
+
         },
         error:function(error){
+            console.log('------ FAIL -------');
             response.error(error);
         }
     });
 
+    cmdyQuery.equalTo('isDiscount',true);
+    cmdyQuery.find({
+        success:function(result){
+            console.log('--------- query cmdy ---------');
+           // console.log();
+           // console.log(result[0]);
+            cmdyOnFinish(result);
+        }
 
-    response.success(mcCmdyTable);
+    });
+
+
+    var cmdyOnFinish = function(result){
+        for(index in result){
+            cmdysArr[index] = {};
+            cmdysArr[index].cmdyName = result[index].get('cmdyName');
+            cmdysArr[index].price = result[index].get('price');
+            cmdysArr[index].disPrice = result[index].get('disPrice');
+            cmdysArr[index].cmdyEncode = result[index].get('cmdyEncode');
+            cmdysArr[index].stock = result[index].get('stock');
+        }
+        console.log(cmdysArr);
+    };
+    var imgOnFinish = function(result){
+        for(index in result){
+            imgsArr.push(result[index].get('url'));
+        }
+        change = true;
+        console.log('---------- query imgs ---------');
+        console.log(imgsArr);
+    };
+
+
+   // response.success(mcCmdyTable);
 
 
 
