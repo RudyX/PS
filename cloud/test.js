@@ -5,32 +5,6 @@
 var AV = require('leanengine');
 
 AV.Cloud.define('testfun3',function(request,response){
-    //var query1 = new AV.Query('tCommodity');
-    //query1.get('55d855fee4b0db80a572c44e',{
-    //    success:function(cmdy){
-    //        var file1 = AV.File.createWithoutData('55d975cf60b26a5284674f86');
-    //        var file2 = AV.File.createWithoutData('55d975cf00b01d2966855c26');
-    //       // console.log(file1);
-    //        //var relation  = cmdy.relation('pics2');
-    //        //relation.add(file1);
-    //
-    //
-    //        cmdy.set('pics',file2);
-    //        cmdy.set('pics',file1);
-    //
-    //        cmdy.save(null,{
-    //            success:function(data){
-    //                console.log(data);
-    //                response.success(data);
-    //            }
-    //        });
-    //
-    //
-    //    },
-    //    error:function(object,error){
-    //
-    //    }
-    //});
 
     var post = AV.Object.new('cmdytest');
     post.set('barcode','1231231023');
@@ -43,21 +17,7 @@ AV.Cloud.define('testfun3',function(request,response){
             response.error(error);
         }
     });
-
-
-
-
 });
-
-//AV.Cloud.beforeSave('cmdytest',function(request,response){
-//    console.log('in beforesave');
-//    console.log(request);
-//    var post = AV.Object.new('POST');
-//    post.set('obj',request);
-//    post.set('bar','123'+request.object.get('objectId'));
-//    post.save();
-//    response.success();
-//});
 
 AV.Cloud.define('getPicsByBarcode',function(request,response){
     var barcode = request.params.barcode;
@@ -77,8 +37,6 @@ AV.Cloud.define('getPicsByBarcode',function(request,response){
         success:function(data){
 
             for(var i=0;i<5;i++){
-
-                //var file = AV.File.createWithoutData(data.get('objectId'));
                 fileURLList.push(data[i].get('url'));
             }
             console.log(fileURLList.length);
@@ -89,4 +47,10 @@ AV.Cloud.define('getPicsByBarcode',function(request,response){
             console.log(error);
         }
     });
+});
+
+
+AV.Cloud.define('usertest',function(request,response){
+   var user = request.user;
+    response.success(user);
 });
