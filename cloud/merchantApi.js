@@ -9,8 +9,6 @@ var AV = require('leanengine');
 var querystring = require('querystring');
 
 
-//var McCmdy = AV.Object.extend('Mc'+mcId+'Cmdy');
-
 
 
 
@@ -44,8 +42,6 @@ AV.Cloud.define('mcAddCmdy',function(request,response){
             //console.log('success');
             //global
             var mcTableName = 'Mc'+mcEncode+'Cmdy';
-
-
             // set data
             var McCmdy = AV.Object.extend(mcTableName);
             var mcCmdy = new McCmdy();
@@ -58,7 +54,6 @@ AV.Cloud.define('mcAddCmdy',function(request,response){
             mcCmdy.set('manufacturer',manufacturer);
             mcCmdy.set('origin',origin);
             mcCmdy.set('description',description);
-
 
             mcCmdy.set('barcode',barcode);
             mcCmdy.set('cmdyname',data.get('cmdyname'));

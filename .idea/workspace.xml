@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2e43d86-12d0-4edc-a675-8de6dd9813ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/storeInfo.js" afterPath="$PROJECT_DIR$/cloud/storeInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/merchantApi.js" afterPath="$PROJECT_DIR$/cloud/merchantApi.js" />
     </list>
     <ignored path="PS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="storeInfo.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="storeInfo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud/storeInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5321782">
+            <state vertical-scroll-proportion="0.0">
               <caret line="558" column="48" selection-start-line="558" selection-start-column="48" selection-end-line="558" selection-end-column="48" />
               <folding />
             </state>
@@ -77,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="merchantApi.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="merchantApi.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cloud/merchantApi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="38" selection-start-line="49" selection-start-column="12" selection-end-line="50" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.26732674">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="false" />
               </folding>
@@ -170,7 +169,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/config/global.json" />
-        <option value="$PROJECT_DIR$/cloud/merchantApi.js" />
         <option value="$PROJECT_DIR$/server/export.js" />
         <option value="$PROJECT_DIR$/server/admini.js" />
         <option value="$PROJECT_DIR$/cloud.js" />
@@ -189,6 +187,7 @@
         <option value="$PROJECT_DIR$/cloud/toolsModule.js" />
         <option value="$PROJECT_DIR$/cloud/test.js" />
         <option value="$PROJECT_DIR$/cloud/storeInfo.js" />
+        <option value="$PROJECT_DIR$/cloud/merchantApi.js" />
       </list>
     </option>
   </component>
@@ -200,8 +199,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-270" />
-    <option name="y" value="84" />
+    <option name="x" value="181" />
+    <option name="y" value="85" />
     <option name="width" value="1630" />
     <option name="height" value="946" />
   </component>
@@ -380,7 +379,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-270" y="84" width="1630" height="946" extended-state="0" />
+    <frame x="181" y="85" width="1630" height="946" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19268897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -803,16 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/toolsModule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloud/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -828,16 +817,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/merchantApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="38" selection-start-line="49" selection-start-column="12" selection-end-line="50" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -866,9 +845,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cloud/storeInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5321782">
+        <state vertical-scroll-proportion="0.0">
           <caret line="558" column="48" selection-start-line="558" selection-start-column="48" selection-end-line="558" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/toolsModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/merchantApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26732674">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
