@@ -530,9 +530,80 @@ AV.Cloud.define('cmGetOrdersList',function(request,response){
         error:function(error){
             response.error(error);
         }
-
     });
-
-
-
 });
+
+
+AV.Cloud.define('cmAddAddress',function(request,response){
+
+    var cmName = request.params.cmName;
+    var consignee =  request.params.consignee;
+    var orderAddress = request.params.orderAddress;
+    var cPhone = request.params.cPhone;
+    var isDefaultAddress = request.params.isDefaultAddress;
+
+    var cmAddress = {
+        consignee:consignee,
+        orderAddress:orderAddress,
+        cPhone:cPhone,
+        isDefaultAddress:isDefaultAddress
+    };
+
+    var query = new AV.Query('_User');
+    query.equalTo('username',cmName);
+    query.first({
+        success:function(result){
+            result.add('cmAddress',cmAddress);
+            result.save(null,{
+                success:function(){
+                    response.success(cmAddress);
+                },
+                error:function(error){
+                    response.error(error);
+                }
+            });
+
+        },
+        error:function(error){
+            response.error(error);
+        }
+    });
+});
+
+
+AV.Cloud.define('cmRemoveAddress',function(request,response){
+
+    var cmName = request.params.cmName;
+    var consignee =  request.params.consignee;
+    var orderAddress = request.params.orderAddress;
+    var cPhone = request.params.cPhone;
+    var isDefaultAddress = request.params.isDefaultAddress;
+
+    var cmAddress = {
+        consignee:consignee,
+        orderAddress:orderAddress,
+        cPhone:cPhone,
+        isDefaultAddress:isDefaultAddress
+    };
+
+    var query = new AV.Query('_User');
+    query.equalTo('username',cmName);
+    query.first({
+        success:function(result){
+            result.remove('cmAddress',cmAddress);
+            result.save(null,{
+                success:function(){
+                    response.success("Delete Success");
+                },
+                error:function(error){
+                    response.error(error);
+                }
+            });
+
+        },
+        error:function(error){
+            response.error(error);
+        }
+    });
+});
+

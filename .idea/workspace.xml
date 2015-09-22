@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b2e43d86-12d0-4edc-a675-8de6dd9813ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/storeInfo.js" afterPath="$PROJECT_DIR$/cloud/storeInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/test.js" afterPath="$PROJECT_DIR$/cloud/test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PS.iws" />
@@ -52,7 +51,17 @@
         <entry file="file://$PROJECT_DIR$/cloud/storeInfo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5321782">
-              <caret line="522" column="0" selection-start-line="522" selection-start-column="0" selection-end-line="522" selection-end-column="0" />
+              <caret line="558" column="48" selection-start-line="558" selection-start-column="48" selection-end-line="558" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -191,8 +200,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="156" />
-    <option name="y" value="90" />
+    <option name="x" value="-270" />
+    <option name="y" value="84" />
     <option name="width" value="1630" />
     <option name="height" value="946" />
   </component>
@@ -219,6 +228,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -234,6 +245,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="PS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -267,8 +292,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -357,8 +380,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="156" y="90" width="1630" height="946" extended-state="0" />
-    <editor active="false" />
+    <frame x="-270" y="84" width="1630" height="946" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19268897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -699,13 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/body-parser/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -825,14 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/storeInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5321782">
-          <caret line="522" column="0" selection-start-line="522" selection-start-column="0" selection-end-line="522" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/admin/template.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -845,6 +853,22 @@
             <marker date="1442145738126" expanded="true" signature="292:340" placeholder="..." />
             <marker date="1442145738126" expanded="true" signature="312:340" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/storeInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5321782">
+          <caret line="558" column="48" selection-start-line="558" selection-start-column="48" selection-end-line="558" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
