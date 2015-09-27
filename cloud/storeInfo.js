@@ -325,7 +325,7 @@ AV.Cloud.define('cmGetCmdyInfo',function(request,response){
     var urls = [];
     var imgName;
 
-//there has not finish yet
+
     var query = new AV.Query(self.tools.getMcCmdyTable(mcEncode));
     var imgQuery = new AV.Query('_File');
 

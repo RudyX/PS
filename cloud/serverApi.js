@@ -8,7 +8,7 @@ var querystring = require('querystring');
 var url = require('url')
 var self = require('./toolsModule');
 
-
+//添加一个库商品
 AV.Cloud.define('addCenterCmdy',function(request,response){
 
     var centerCmdy = new CenterCmdy();
@@ -20,6 +20,7 @@ AV.Cloud.define('addCenterCmdy',function(request,response){
     var cmdyEncode = request.params.cmdyEncode;
 });
 
+//添加一个商户
 AV.Cloud.define('addMerchant',function(request,response){
     var mcName = request.params.mcName;
     var mcAddress = request.params.mcAddress;
@@ -42,7 +43,7 @@ AV.Cloud.define('addMerchant',function(request,response){
 
 
 
-    //get a merchant
+    //create a merchant
     var mc = new AV.User();
     mc.set('mcName',mcName);
     mc.set('username',mcAccount);
@@ -62,23 +63,14 @@ AV.Cloud.define('addMerchant',function(request,response){
     mc.set('minCost',minCost);
     mc.set('mcGrade',mcGrade);
 
-
-
-
-
+    //create data in amap高德地图
     var amapData = new self.val.aMap.data(mcName,mcLocation,saleScope,minCost,mcAddress,mcEncode);
-
-
 
     var reqData = querystring.stringify({
         key:self.val.aMap.key,
         tableid:self.val.aMap.tableId,
         data:JSON.stringify(amapData)
     });
-
-
-
-
 
     var amapUrl = url.parse(self.val.aMap.createDataUrl);
 
@@ -116,6 +108,43 @@ AV.Cloud.define('addMerchant',function(request,response){
     });
     req.write(reqData);
     req.end();
+
+
+});
+
+
+
+
+
+//获得订单列表
+AV.Cloud.define('mcGetOrdersList',function(request,response){
+    var limit = request.params.limit;
+    var skip = request.params.skip;
+    var mcEncode = request.params.mcEncode;
+    var status = request.params.status;
+
+
+    var query = new AV.Query('orders');
+    if(limit){
+        query.limit(limit);
+    }
+    if(skip){
+        query.skip(skip);
+    }
+
+    query.equalTo('mcEncode',mcEncode);
+    query.equalTo('status',status);
+
+    query.find({
+       success:function(result){
+           response.success(result);
+       } ,
+        error:function(error){
+            response.errpr(error);
+        }
+    });
+
+
 
 
 });
