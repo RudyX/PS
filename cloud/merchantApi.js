@@ -13,7 +13,7 @@ var querystring = require('querystring');
 
 
 
-
+//添加一个商品
 AV.Cloud.define('mcAddCmdy',function(request,response){
     if(!request.user.get('mcEncode')){
         response.error({code:1501,message:"只有登陆了的商户才可以调用该函数(user.mcEncode为空)"});
@@ -82,6 +82,8 @@ AV.Cloud.define('mcAddCmdy',function(request,response){
     });
 });
 
+
+//将商品设置成特价
 AV.Cloud.define('mcSetDisCmdy',function(request,response){
     if(!request.user.get('mcEncode')){
         response.error({code:1501,message:"只有登陆了的商户才可以调用该函数(user.mcEncode为空)"});
@@ -110,7 +112,6 @@ AV.Cloud.define('mcSetDisCmdy',function(request,response){
                     response.error(error);
                 }
             });
-
         },
         error:function(object,error){
             response.error(error);
@@ -118,6 +119,8 @@ AV.Cloud.define('mcSetDisCmdy',function(request,response){
     });
 
 });
+
+
 
 
 
