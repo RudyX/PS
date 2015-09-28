@@ -26,6 +26,14 @@ self.tools = {
             else{
                return 'mcAD'+mcEncode;
             }
+        },
+
+        getField:function(fieldArr,AVObj){
+            var obj = {};
+            for(i in fieldArr){
+                obj[''+fieldArr[i]] = AVObj.get(''+fieldArr[i]);
+            }
+            return obj;
         }
 
     };

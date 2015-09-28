@@ -315,7 +315,7 @@ AV.Cloud.define('cmGetCmdyList',function(request,response){
 });
 
 
-AV.Cloud.define('cmGetCmdyInfo',function(request,response){
+AV.Cloud.define('GetCmdyInfo',function(request,response){
     console.log('--------- param ------------');
     console.log(request);
     console.log('--------- param ------------');
@@ -379,7 +379,6 @@ AV.Cloud.define('cmGetCmdyInfo',function(request,response){
 });
 
 
-// has not done yet
 AV.Cloud.define('cmPlaceAnOrder',function(request,response){
 
     //获取所有请求参数

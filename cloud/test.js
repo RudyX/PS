@@ -3,6 +3,7 @@
  */
 
 var AV = require('leanengine');
+var self = require('./toolsModule');
 
 AV.Cloud.define('testfun3',function(request,response){
 
@@ -50,7 +51,15 @@ AV.Cloud.define('getPicsByBarcode',function(request,response){
 });
 
 
-AV.Cloud.define('usertest',function(request,response){
-   var user = request.user;
-    response.success(user);
+AV.Cloud.define('fieldtest',function(request,response){
+    var Post = AV.Object.extend('Post');
+    var post = new Post();
+    post.set('name','Tim');
+    post.set('age',18);
+    var obj = self.tools.getField(['name','age'],post);
+    console.log(obj);
+    response.success(obj);
+
 });
+
+

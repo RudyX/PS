@@ -7,7 +7,7 @@ var http = require("http");
 var fs = require('fs');
 var AV = require('leanengine');
 var querystring = require('querystring');
-
+var self = require('./toolsModule');
 
 
 
@@ -15,10 +15,11 @@ var querystring = require('querystring');
 
 //添加一个商品
 AV.Cloud.define('mcAddCmdy',function(request,response){
+    /*
     if(!request.user.get('mcEncode')){
         response.error({code:1501,message:"只有登陆了的商户才可以调用该函数(user.mcEncode为空)"});
     }
-
+    */
     var barcode = request.params.barcode;
     var price = request.params.price;//int
     var isDiscount = request.params.isDiscount;//boolean
@@ -122,5 +123,129 @@ AV.Cloud.define('mcSetDisCmdy',function(request,response){
 
 
 
+//获得订单列表
+AV.Cloud.define('mcGetOrdersList',function(request,response){
+    var limit = request.params.limit;
+    var skip = request.params.skip;
+    var mcEncode = request.params.mcEncode;
+    var status = request.params.status;
 
 
+    var query = new AV.Query('orders');
+    if(limit){
+        query.limit(limit);
+    }
+    if(skip){
+        query.skip(skip);
+    }
+
+    query.equalTo('mcEncode',mcEncode);
+    query.equalTo('status',status);
+
+    query.find({
+        success:function(result){
+            response.success(result);
+        },
+        error:function(error){
+            response.errpr(error);
+        }
+    });
+
+
+
+
+});
+
+
+
+//获得商品列表
+AV.Cloud.define('mcGetCmdyList',function(request,response){
+    var mcEncode = request.params.mcEncode;
+    var limit = request.params.limit;
+    var skip = request.params.skip;
+    var status = request.params.status;
+
+    var query = new AV.Query(self.tools.getMcCmdyTable(mcEncode));
+
+    switch(status){
+        case 'onSale':
+            query.greaterThan('stock',0);
+            break;
+        case 'saleOff':
+            query.equalTo('stock',0);
+            break;
+        case 'discount':
+            query.equalTo('isDiscount',false);
+            break;
+    }
+
+    if(limit){
+        query.limit(limit);
+    }
+    if(skip){
+        query.skip(skip);
+    }
+
+    query.count({
+        success:function(count){
+            query.find({
+                success:function(result){
+                    console.log('------- result ----------');
+                    console.log(result)
+                    if(result.length > 0){
+                       // result.set('count',count);
+                    }
+
+                    response.success(result);
+
+                },
+                error:function(error){
+                    response.error(error);
+                }
+            });
+        },
+        error:function(error){
+            response.error(error)
+        }
+
+    });
+});
+
+
+
+//修改库存
+AV.Cloud.define('mcSetCmdyStock',function(request,response){
+    var mcEncode = request.params.mcEncode;
+    var cmdyEncode = request.params.cmdyEncode;
+    var newStock = request.params.newStock;
+
+    var query = new AV.Query(self.tools.getMcCmdyTable(mcEncode));
+    query.equalTo('cmdyEncode',cmdyEncode);
+    query.first({
+        success:function(result){
+            result.set('stock',newStock);
+            result.save({
+                success:function(result){response.success(result)},
+                error:function(error){response.error(error)}
+            });
+        },
+        error:function(error){
+            response.error(error);
+        }
+    });
+});
+
+//获得某一天的订单数量
+//not done yet
+AV.Cloud.define('mcGetOrdersCountByDate',function(request,response){
+    var mcEncode = request.params.mcEncode;
+    var date = request.params.date;
+
+    var query = new AV.Query('orders');
+    query.equalTo('mcEncode',mcEncode);
+});
+
+AV.Cloud.define('dateTestFun',function(request,response){
+
+
+});

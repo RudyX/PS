@@ -30,7 +30,7 @@ AV.Cloud.define("cmSignIn",function(request,response){
     var username = request.params.phoneNumber;
     var password = params.password;
 
-   // var username = "13127582620";
+    // var username = "13127582620";
     //var password = "135797";
 
     AV.User.logIn(username, password, {

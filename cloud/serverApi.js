@@ -115,36 +115,3 @@ AV.Cloud.define('addMerchant',function(request,response){
 
 
 
-
-//获得订单列表
-AV.Cloud.define('mcGetOrdersList',function(request,response){
-    var limit = request.params.limit;
-    var skip = request.params.skip;
-    var mcEncode = request.params.mcEncode;
-    var status = request.params.status;
-
-
-    var query = new AV.Query('orders');
-    if(limit){
-        query.limit(limit);
-    }
-    if(skip){
-        query.skip(skip);
-    }
-
-    query.equalTo('mcEncode',mcEncode);
-    query.equalTo('status',status);
-
-    query.find({
-       success:function(result){
-           response.success(result);
-       } ,
-        error:function(error){
-            response.errpr(error);
-        }
-    });
-
-
-
-
-});
